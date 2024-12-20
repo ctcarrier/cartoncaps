@@ -19,7 +19,7 @@ namespace CartonCapsApi.Services
             _externalService = externalService;
         }
 
-        public async Task<string?> GetReferralLinkAsync(string userId)
+        public async Task<string> GetReferralLinkAsync(string userId)
         {
             var userRecord = await _externalService.GetUserAsync(userId);
 
