@@ -28,11 +28,11 @@ namespace Tests
 
             var result = await controller.GetReferralLink() as OkObjectResult;
             result.Should().NotBeNull();
-#pragma warning disable 8602
+            #pragma warning disable 8602
             var response = result.Value as CreateReferralLinkResponse;
             response.Should().NotBeNull();
             response.ReferralLink.Should().Be("https://example.com/ref/ABC123");
-#pragma warning restore 8602
+            #pragma warning restore 8602
         }
 
         [Fact]
@@ -47,10 +47,10 @@ namespace Tests
 
             var result = await controller.GetReferredUsers() as OkObjectResult;
             result.Should().NotBeNull();
-#pragma warning disable 8602
+            #pragma warning disable 8602
             var value = result.Value as dynamic;
             ((System.Collections.Generic.List<string>)value.referrals).Should().Contain(new[] { "refUser1", "refUser2" });
-#pragma warning restore 8602
+            #pragma warning restore 8602
         }
 
         [Fact]
@@ -104,9 +104,9 @@ namespace Tests
             var request = new CreateReferredUserRequest { ReferredUserId = "newUser" };
             var result = await controller.CreateReferredUser(request) as CreatedResult;
             result.Should().NotBeNull();
-#pragma warning disable 8602, 8600
+            #pragma warning disable 8602, 8600
             ((ReferredUser)result.Value).Should().BeEquivalentTo(newUser);
-#pragma warning restore 8602, 8600
+            #pragma warning restore 8602, 8600
         }
 
         [Fact]
