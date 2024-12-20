@@ -55,7 +55,7 @@ namespace CartonCapsApi.Services
             {
                 UserId = userId,
                 ReferredUserId = referredUserId,
-                CreatedDate = DateTime.UtcNow 
+                CreatedDate = DateTime.UtcNow
             };
 
             _context.ReferredUsers.Add(referredUser);
