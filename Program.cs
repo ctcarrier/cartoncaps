@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Serilog config remains the same
 builder.Host.UseSerilog((context, config) =>
 {
     config
@@ -23,16 +22,13 @@ builder.Host.UseSerilog((context, config) =>
 
 builder.Services.AddControllers();
 
-// EF InMemory
 builder.Services.AddDbContext<ReferralContext>(options =>
     options.UseInMemoryDatabase("CartonCapsDb"));
 
-// JWT with user-jwts defaults
 builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer();
 
-// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -53,7 +49,6 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Services
 builder.Services.AddScoped<IUserExternalService, MockUserExternalService>();
 builder.Services.AddScoped<IReferralService, ReferralService>();
 
@@ -77,7 +72,6 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// Seed initial data
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<ReferralContext>();

@@ -78,7 +78,6 @@ namespace CartonCapsApi.Controllers
             var userId = GetUserId();
             _logger.Information("Attempting to create referred user {ReferredUserId} for {UserId}", request.ReferredUserId, userId);
 
-            // Manual validation for referredUserId
             if (string.IsNullOrWhiteSpace(request.ReferredUserId))
             {
                 return BadRequest(new { error = "ReferredUserId is required." });

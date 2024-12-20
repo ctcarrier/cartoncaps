@@ -42,7 +42,6 @@ namespace CartonCapsApi.Services
 
         public async Task<Data.Entities.ReferredUser> CreateReferredUserAsync(string userId, string referredUserId)
         {
-            // Check if already exists
             var exists = await _context.ReferredUsers
                 .AnyAsync(ru => ru.UserId == userId && ru.ReferredUserId == referredUserId);
 

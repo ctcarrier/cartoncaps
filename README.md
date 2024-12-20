@@ -54,3 +54,11 @@ curl -X 'GET' \
   -H 'Authorization: Bearer <YOUR_JWT_TOKEN>' 
 ```
 
+### Fetch a referral URL for a user
+```bash
+curl -X 'GET' \
+  'http://localhost:5000/referral-link' \
+  -H 'accept: text/plain' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer <YOUR_JWT_TOKEN>' 
+  ```
